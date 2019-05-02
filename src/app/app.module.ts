@@ -6,11 +6,13 @@ import { MatCardModule, MatFormFieldModule, MatInputModule } from '@angular/mate
 
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { initialState, reducers } from './app.state';
+import { EffectsModule } from '@ngrx/effects';
+import { initialState, reducers, effects } from './app.state';
 
 import { AppRoutes } from './app.routing';
 import { AppComponent } from './app.component';
 import { BananaComponent } from './banana/banana.component';
+import { RotService } from './rot.service';
 
 @NgModule({
   imports:      [ 
@@ -23,6 +25,7 @@ import { BananaComponent } from './banana/banana.component';
     StoreDevtoolsModule.instrument({
       maxAge: 25
     }),
+    EffectsModule.forRoot(effects),
     RouterModule.forRoot(AppRoutes)
   ],
   declarations: [ 
