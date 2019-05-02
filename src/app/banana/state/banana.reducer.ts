@@ -1,4 +1,4 @@
-import { GET_NEW_BANANA, PEEL_BANANA } from './banana.actions';
+import { GET_NEW_BANANA, PEEL_BANANA, EAT_BANANA } from './banana.actions';
 import * as programActions from './banana.actions';
 
 export function reducer(state: any, action: programActions.BananaAction): any {
@@ -7,7 +7,7 @@ export function reducer(state: any, action: programActions.BananaAction): any {
       console.log(`REDUCER: ${GET_NEW_BANANA}`);
       return {
         isPeeled: false,
-        bitesRemaning: 9,
+        bitesRemaining: 9,
         color: 'yellow'
       };
     }
@@ -16,6 +16,13 @@ export function reducer(state: any, action: programActions.BananaAction): any {
       return {
         ...state,
         isPeeled: true
+      }
+    }
+    case EAT_BANANA: {
+      console.log(`REDUCER: ${EAT_BANANA}`);
+      return {
+        ...state,
+        bitesRemaining:(state.bitesRemaining - action.payload)
       }
     }
     default: {
